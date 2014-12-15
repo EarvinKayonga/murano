@@ -5,6 +5,7 @@ mdp VARCHAR(20),
 Nom VARCHAR(20),
 prenom VARCHAR(20),
 datenaissance YEAR,
+email VARCHAR(20),
 PRIMARY KEY (id_utilisateur) ) ENGINE=InnoDB;
 
 DROP TABLE IF EXISTS commentaire ;

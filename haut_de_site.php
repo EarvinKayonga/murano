@@ -11,17 +11,55 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	
 		<style type="text/css">
+			.nav{
+				background: none repeat scroll 0 0 #fff;
+    			height: 46px;
+			}
+			.navel{
+				 border: 0 none;
+			    display: inline-block;
+			    text-shadow: 16px 11px 4px rgba(175, 163, 195, 0.71);
+			    float: right;
+			    right: 150px;
+			}
 			#connexion{
-				margin: 0 auto;
-				box-shadow: 9px;
-				border:7px
+				margin: 0 auto;								
+				position: relative;
+				top: 40px;
+				left: 300px;
+				height: 200px;
+				width: 350px;
 
 			}
-			.co1{
+
+			.i{
+				padding: 3px;
+				margin: 5px;
+			}
+			.i1{
+				padding: 4px;
+			}
+			.co{
+				-moz-box-shadow: 20px 20px 5px 0px #330001;
+				-webkit-box-shadow: 15px 20px 5px 0px #330001;
+				-o-box-shadow: 15px 20px 5px 0px #330001;
+				box-shadow: 20px 30px 5px 0px #330001;
+				filter:progid:DXImageTransform.Microsoft.Shadow(color=#330001, Direction=158, Strength=5);
+				-moz-border-radius: 10px;
+				-webkit-border-radius: 10px;
+				border-radius: 10px;
+
+
+
 				margin: 0 auto;
 				box-shadow: 9px;
-				border:7px;
+				padding-top: 2px; 
+				margin: 1px;
+				background: white;
 				text-align:center;
+				font-family: Helvetica;
+				border-radius: 12px;
+
 			}
 			.affair{
 				padding: 70px;
@@ -49,10 +87,10 @@
 			}
 
 			body{
-				/*background-image: url("img.jpg");
-				 background-repeat:no-repeat;*/
+				background-image: url("img.gif");
+				/* background-repeat:no-repeat;*/
     			/* custom background-position */
-    			/*background-position:50% 30%;*/
+    			background-position:50% 30%;
     			/* ie8- graceful degradation */
    				/* background-position:50% 50%9 !important;*/
 			}
@@ -82,8 +120,15 @@
     			box-shadow: none;
 
 			}
+			.clear{
+				clear: both;
+			}
 
 		</style>
 	</head>
 	<body>
+	<?php
+		require_once("menu.php");
+	?>
+
 		<div id="conteneur">

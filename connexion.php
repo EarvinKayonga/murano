@@ -1,39 +1,64 @@
  <?php
-require_once ("init_inc.php");
+require_once("init_inc.php");
 
-if ($_POST)
-{
-  
-$_POST['pseudo'] = htmlentities($_POST['pseudo'], ENT_QUOTES);
-$_POST['mdp'] = htmlentities($_POST['mdp'], ENT_QUOTES);
-$resultat = execute_requete("SELECT * FROM utilisateur WHERE pseudo ='$_POST[pseudo]' and mdp='$_POST[mdp]'");
-if ($resultat->num_rows > 0)
-{
-$membre = $resultat->fetch_assoc();
-foreach($membre as $indice => $valuer)
-{
-$_SESSION['utilisateur'][$indice] = $valuer;
+if ($_POST) {
+    
+    if (isset($_POST['pseudo'])) {
+      $_POST['pseudo'] = htmlentities($_POST['pseudo'], ENT_QUOTES);
+      $_POST['mdp']    = htmlentities($_POST['mdp'], ENT_QUOTES);
+      $resultat        = execute_requete("SELECT * FROM utilisateur WHERE pseudo ='$_POST[pseudo]' and mdp='$_POST[mdp]'");
+      if ($resultat->num_rows > 0) {
+        $membre = $resultat->fetch_assoc();
+        foreach ($membre as $indice => $valuer) {
+            $_SESSION['utilisateur'][$indice] = $valuer;
+        }        
+        header("location:profil.php");
+    
+    } else {
+        $msg .= "Erreur d'identification";
+    }
+    }elseif (isset($_POST['prepseudo'])) {
+      debug($_POST);
+
+      foreach ($_POST as $key => $value) {
+      $_POST[$key] = htmlentities($value,ENT_QUOTES);
+      }
+    
+      $resultat = execute_requete("SELECT * FROM utilisateur WHERE pseudo ='$_POST[prepseudo]'");
+      $pseudo = $_POST['prepseudo'];
+      $mdp= $_POST['password'];
+      $mail= $_POST['preemail'];
+
+      if ($resultat->num_rows==0) {
+        execute_requete("INSERT INTO utilisateur(pseudo, mdp, email ) VALUES('$pseudo','$mdp','$mail')" );
+        $msg .= "<div class='validation'>Inscription okay<div>";
+        echo $msg;
+        header("location:profil.php");
+      }else{
+      $msg .= "<div class='validation'>Ce pseudo existe déjà<div>";
+      echo $msg;
+      }
+ 
+      
+      header("location:profil.php");
+    }
+      $msg .= "Erreur interne";
 }
 
-header("location:profil.php");
-}
-  else
-{
-$msg.= "Erreur d'identification";
-}
-}
+require_once("haut_de_site.php");
 
-require_once ("haut_de_site.php");
-
-require_once ("menu.php");
+require_once("menu.php");
 
 echo $msg;
 ?>
 
+
 <div id="connexion">
+  
   <div class="co">
     <form action="" method="post">
-      <div class="username field">
+      
+      <div class="i">
         <input
         type="text"
         id="pseudo"
@@ -43,86 +68,45 @@ echo $msg;
         />
       </div>
       
-      <table class="">
-        <tbody>
-          <tr>
-            <td class="">
-              <div class="">
-                <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
-              </div>
-            </td>
-            <td class="">
-              <button type="submit" class="">
-                Connexion
-              </button>
-            </td>
-          </tr>
-        </tbody>
-          </table>
-          
-          
-          
-      </form>
+      <div class="i">
+          <input type="password" id="mdp" name="mdp" placeholder="Mot de passe">
+      </div>
+      <div class="i">
+        <button type="submit" class="btn btn-primary">
+          Connexion
+        </button> 
+      </div>
+    </form>
   </div>
 
 
-<div class="co1">
-  <h2>
-    <strong>
-      Première connexion ?
-    </strong>
-    Joins nous
-        </h2>
+  <div class="co">
+    <h2>
+      <strong>
+        Première connexion ?
+      </strong>Joignez nous
+    </h2>
         
         
-        <form action="" class="t1-form signup"  method="post">
+    <form action="" class="i1"  method="post">
           
-          <div class="field">
-            <input type="text" autocomplete="off" name="prepseudo" maxlength="20" placeholder="Pseudo">
-          </div>
-          <div class="field">
-            <input type="text" autocomplete="off" name="preemail" placeholder="Adresse email">
-          </div>
-          <div class="field">
-            <input type="password" name="password" placeholder="Mot de passe">
-          </div>
+      <div class="field">
+        <input type="text"  class="i"autocomplete="off" name="prepseudo" maxlength="20" placeholder="Pseudo">
+      </div>
+      <div class="field">
+        <input type="email"  class="i"autocomplete="off" name="preemail" placeholder="Adresse email">
+      </div>
+      <div class="field">
+        <input type="password" class="i" name="password" placeholder="Mot de passe">
+      </div>
           
-          
-          <button type="submit" class="btn signup-btn u-floatRight">
-            Valider
-          </button>
-        </form>
-        
+      <div class="i">
+        <button type="submit" class="btn btn-success">
+          S'inscrire
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
-</div>
 
 
-<!--
-<p class="affair">
-Portail
-</p>
-
-
-<form method="post" >
-<label for="pseudo">
-Pseudo
-</label>
-<input id="pseudo" placeholder="Votre pseudo" type="text" name="pseudo" required/>
-
-<label for="mdp">
-Mot de passe
-</label>
-<input id="mdp" type="password" placeholder="Votre mot de passe" type="text" name="mdp" required />
-<br/>
-<br />
-
-<button type="submit" class="btn btn-primary">
-Connexion
-</button>
-
-</form>
-
-<br/>
-
-<br/>
--->
