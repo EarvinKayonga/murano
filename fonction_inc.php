@@ -27,6 +27,16 @@ function utilisateur_est_connecte(){
 
 
 //--------------------------------------------------------------
+
+function utilisateur_est_connecte_root(){ //a ecrire
+  if (isset($_SESSION['utilisateur'])) {
+    return true;
+  }
+  return false;
+}
+
+
+//--------------------------------------------------------------
 function get_client_ip()
  {
       $ipaddress = '';
@@ -48,4 +58,48 @@ function get_client_ip()
       return $ipaddress;
  }
   //----------------------------------------------------------------
+
+function Xcute($arg){
+  if (is_string($arg)) {
+    
+      $resultat = execute_requete("$arg");
+      if ($resultat->num_rows) {
+        $ligne = 0;
+        echo "<br>";
+            
+        
+            //---------RESULTATS
+            echo "<table border= 2;>";
+            $membre = $resultat->fetch_assoc();
+            foreach ($membre as $indice => $value) {
+              echo "<th>".$indice."</th>";
+            }
+            echo "<tr>";
+            foreach ($membre as $indice => $value) {
+              
+              echo "<th>".$value."</th>";
+              
+      
+            }
+             while ($membre = $resultat->fetch_assoc()) {
+        
+            
+            $ligne = $ligne + 1;
+            
+            echo "<tr>";
+            foreach ($membre as $indice => $value) {
+              
+              echo "<th>".$value."</th>";
+              
+            }
+
+            }
+            echo "</table>";
+            echo "<br>";
+            echo "<p> Lignes concernées: ".($ligne+1)."</p>";
+          
+  }
+}
+}
+
 

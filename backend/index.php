@@ -1,7 +1,8 @@
  <?php
-require_once("init_inc.php");
-if (utilisateur_est_connecte()) {
-  header("location:profil.php");
+require_once("../init_inc.php");
+
+if (utilisateur_est_connecte_root()) {
+  header("location:main.php");
   die();
 }
 
@@ -16,7 +17,7 @@ if ($_POST) {
         foreach ($membre as $indice => $valuer) {
             $_SESSION['utilisateur'][$indice] = $valuer;
         }        
-        header("location:profil.php");
+        header("location:main.php");
     
     } else {
         $msg .= "Erreur d'identification";
@@ -45,22 +46,22 @@ if ($_POST) {
       }
  
       
-      header("location:profil.php");
+      header("location:main.php");
     }
       $msg .= " Erreur interne";
 }
 
-require_once("haut_de_site.php");
+require_once("../haut_de_site.php");
 
 require_once("menu.php");
 
 echo $msg;
 ?>
 
-<div class="desc" >
-  <h1 >Bienvenue sur Murano</h1>
+<div class="co">
+  <h1 >Bienvenue sur le Backend</h1>
   
-  <p >Connectez vous pour obtenir de l'aide</p>
+  <p>Un outil pour gérer simplement ce site</p>
 
 </div>
 
@@ -92,36 +93,10 @@ echo $msg;
   </div>
 
 
-  <div class="co">
-    <h2>
-      <strong>
-        Première connexion ?
-      </strong>Joignez nous
-    </h2>
-        
-        
-    <form action="" class="i1"  method="post">
-          
-      <div class="field">
-        <input type="text"  class="i"autocomplete="off" name="prepseudo" maxlength="20" placeholder="Pseudo" required>
-      </div>
-      <div class="field">
-        <input type="email"  class="i"autocomplete="off" name="preemail" placeholder="Adresse email" required>
-      </div>
-      <div class="field">
-        <input type="password" class="i" name="password" placeholder="Mot de passe" required>
-      </div>
-          
-      <div class="i">
-        <button type="submit" class="btn btn-success">
-          S'inscrire
-        </button>
-      </div>
-    </form>
-  </div>
+  
 </div>
 
 </div>
 <?php
-  require_once("footer.php");
+  require_once("../footer.php");
 ?>

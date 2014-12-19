@@ -2,6 +2,7 @@
 
 
 $mysqli = @new Mysqli("localhost","root", "","murano");
+// serveur distant a faire
 
 if($mysqli->connect_error)
 	{

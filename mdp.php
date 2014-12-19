@@ -19,8 +19,13 @@ if(empty($_GET) == false){
 		execute_requete($req);
 		
 		$msg .= "<div class='b'>Changement effectuee<div>";
+		$subject ="[Urgent] Murano Changement de mot de passe";
+		$message = "Votre nouveau mot de passe: ' $mdp' ";
+
+
+		mail( $_GET['email'] ,  $subject ,  $message );
 		
-		header("location:profil.php");
+		header("location:profil.php?change=true");
 	}else{
 		/*var_dump($_POST);
 		var_dump($_GET);*/
@@ -32,7 +37,7 @@ if(empty($_GET) == false){
 }
 
 }
-require_once("haut_de_site_inc.php");
+require_once("haut_de_site.php");
 echo $msg;
 
 
@@ -42,7 +47,7 @@ echo $msg;
 	
 	
 	<label for="mdp">Mot de passe</label>
-		<input id="mdp" type="password" placeholder="Votre mot de passe" type="text" name="mdp" required /><br/>
+		<input id="mdp" type="password" placeholder="Nouveau mot de passe" type="text" name="mdp" required /><br/>
 	<br>
 
 	<button type="submit" class="btn btn-primary">Changer</button> 
