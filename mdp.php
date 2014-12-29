@@ -5,7 +5,7 @@ require_once("init_inc.php");
 if(empty($_GET) == false){
 	if (!empty($_GET['id_utilisateur'])) {
 		if ($_POST) {
-	$_GET['id_utillisateur']=htmlentities($_GET['id_utilisateur'],ENT_QUOTES);
+	$_GET['id_utilisateur']=htmlentities($_GET['id_utilisateur'],ENT_QUOTES);
 	$_POST['mdp']=htmlentities($_POST['mdp'],ENT_QUOTES);
 
 	foreach ($_POST as $key => $value) {

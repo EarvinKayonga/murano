@@ -4,6 +4,7 @@ if (!utilisateur_est_connecte()) {
 	header("location:connexion.php");
 	die();
 }
+ipregister(get_client_ip());
 require_once("haut_de_site.php");
 
 
@@ -21,14 +22,29 @@ require_once("haut_de_site.php");
 		<?php
 		$id_utilisateur =$_SESSION['utilisateur']['id_utilisateur'];
 		$mail = $_SESSION['utilisateur']['email'];
+		// Changement de Mot de passe
 		$do = '<p class="b">'; 
 		$do .= '<a href=mdp.php?id_utilisateur=' . $id_utilisateur;
 		$do .= '&email='.$mail;
-
 		$do .= ">Changer de mot de passe</a></p>";
+		
 		echo $do;
+		//-----------------------------------
+		// Modifications de vos infos
+		$d = '<p class="b">'; 
+		$d .= '<a href=modification.php?id_utilisateur=' . $id_utilisateur;
+		
+		$d .= ">Modifier vos infos</a></p>";
+		
+		echo $d;
+
+		//---------------------------------
+
+
+
 		?>
 		<p class="b">Adresse IP actuelle: <?php echo get_client_ip(); ?></p>
+		<p class="b">Les précédentes adresses IP : <br/><?php echo displayip($id_utilisateur); ?></p>
 
 		
 	</div>

@@ -1,4 +1,18 @@
 <?php
+//------------------------------------------------------------
+function ipregister($ip){
+
+ // execute_requete("INSERT INTO connexion(ip, id_utilisateur) VALUES('$ip','$id_utilisateur') ");
+
+}
+
+
+//-------------------------------------------------
+function displayip($id_utilisateur){
+  Xcute("select ip from connexion where id_utilisateur = $id_utilisateur");
+}
+
+//--------------------------------------------------
 function debug($arg){
 	echo "<pre>"; print_r($arg); echo "</pre>";
 	$info = debug_backtrace();

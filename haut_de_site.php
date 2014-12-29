@@ -104,6 +104,13 @@
 				font-family: Courier, copperplate, sans-serif ;
 				font-size: 80px;
 			 }
+			 .secretm{
+			 	padding: 40px;
+				text-align: center;
+				margin: 0 auto;
+				font-family: Courier,sans-serif ;
+				font-size: 40px;
+			 }
 
 			.b{
 				padding: 5px;
