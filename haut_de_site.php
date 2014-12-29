@@ -172,9 +172,18 @@
 
 
 			}
-			#secu{
+			#secu {
 				width: 200px;
-				max-height: 100px;
+				max-height: 500px;
+				background: white !important ;
+				margin: 10;
+				padding: 10;
+
+				border-color: red;
+    			border-width: 1px;
+				box-shadow: 20px 30px 5px 0px #330001;
+				border-radius: 10px;
+
 			}
     		#footer{
     			position:absolute;

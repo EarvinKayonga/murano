@@ -44,7 +44,7 @@ require_once("haut_de_site.php");
 
 		?>
 		<p class="b">Adresse IP actuelle: <?php echo get_client_ip(); ?></p>
-		<p class="b">Les précédentes adresses IP : <br/><?php echo displayip($id_utilisateur); ?></p>
+		<p class="b">Les précédentes adresses IP : <br/><?php echo displayip($id_utilisateur); ?></p>		
 
 		
 	</div>
