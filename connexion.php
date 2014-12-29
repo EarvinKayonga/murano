@@ -61,6 +61,10 @@ echo $msg;
   <h1 >Bienvenue sur Murano</h1>
   
   <p >Connectez vous pour obtenir de l'aide</p>
+  <p>Join to get help</p>
+  <p>تسجيل الدخول للحصول على مساعدة</p>
+  <p>Zaloguj się, aby uzyskać pomoc</p>
+  <p>登錄獲得幫助</p>
 
 </div>
 
